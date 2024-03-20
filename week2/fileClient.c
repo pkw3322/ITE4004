@@ -33,6 +33,8 @@ int main(int argc,char *argv[]){
     serv_adr.sin_family = AF_INET; //tcp통신에서 ipv4형식으로 나타내겠다는 뜻
     serv_adr.sin_addr.s_addr = inet_addr(argv[1]); // 서버 ip
     serv_adr.sin_port = htons(atoi(argv[2])); //서버 port
+    //127.0.0.1, 9091 (2진수 또는 16진수)
+    //atoi: 문자열을 int로 바꾸기 위해
     //htons 서버와 클라이언트의 OS를 고려하고 환경을 맞추기 위한 약속 정하는 과정
 
     if(connect(sd, (struct sockaddr*)&serv_adr, sizeof(serv_adr)) == -1){
