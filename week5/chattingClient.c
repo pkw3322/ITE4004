@@ -62,11 +62,11 @@ void *send_msg(void* arg){
             exit(0);
         }
         sprintf(name_msg, "%s %s", name, msg);
+        
         write(sock, name_msg, strlen(name_msg));
     }
     return NULL;
 }
-//172.16.161.217
 
 void *recv_msg(void* arg){
     int sock = *((int*)arg);

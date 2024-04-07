@@ -49,7 +49,11 @@ int main(int argc,char *argv[]){
     while(1){
         clnt_addr_sz = sizeof(clnt_addr);
         clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_sz);
-
+        if(clnt_cnt == 2){
+            write(clnt_sock, "Sorry, the room is full\n", 25);
+            close(clnt_sock);
+            continue;
+        }
         pthread_mutex_lock(&mutx);
         clnt_socks[clnt_cnt++] = clnt_sock;
         pthread_mutex_unlock(&mutx);
