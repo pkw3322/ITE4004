@@ -83,8 +83,9 @@ void * handle_clnt(void *arg){
     pthread_mutex_lock(&mutx);
     for(i=0; i < clnt_cnt; i++){
         if(clnt_sock==clnt_socks[i]){
-            while(i++ < clnt_cnt -1){
+            while(i < clnt_cnt -1){
                 clnt_socks[i] = clnt_socks[i+1];
+                i += 1;
             }
             break;
         }
